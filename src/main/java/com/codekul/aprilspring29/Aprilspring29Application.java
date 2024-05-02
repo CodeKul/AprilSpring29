@@ -1,5 +1,6 @@
 package com.codekul.aprilspring29;
 
+import com.codekul.aprilspring29.di.Company;
 import com.codekul.aprilspring29.ioc.SimConfig;
 import com.codekul.aprilspring29.ioc.Vodafone;
 import org.springframework.boot.SpringApplication;
@@ -24,6 +25,9 @@ public class Aprilspring29Application {
 
 		Vodafone vodafone1 = context.getBean(Vodafone.class);
 		vodafone1.calling();
+
+		Company company = context.getBean(Company.class);
+		company.display();
 	}
 
 
