@@ -3,6 +3,7 @@ package com.codekul.aprilspring29.jpa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,9 +63,33 @@ public class StudentController {
         return "student deleted successfully";
     }
 
-    @GetMapping("findBy/{name}")
-    public Student delete(@PathVariable String name) {
-        return studentRepo.findByNameAndAddressIgnoreCase(name);
+    @GetMapping("findBy/{name}/{address}")
+    public Student delete(@PathVariable String name, @PathVariable("address") String address) {
+        return studentRepo.findByNameAndAddressIgnoreCase(name, address);
+    }
+
+    @GetMapping("findByActive")
+    public List<Student> findByActiveFalse() {
+        return studentRepo.findByActiveFalse();
+    }
+
+    @GetMapping("findByAgeNotIn/{age}")
+    public List<Student> findByAgeNotIn(@PathVariable("age") List<Integer> age) {
+        return studentRepo.findByAgeNotIn(age);
+    }
+
+    @GetMapping("findByNameNot/{name}")
+    public List<Student> findByNameNotIn(@PathVariable("name") String name) {
+        return studentRepo.findByNameNot(name);
+    }
+
+    @GetMapping("findByDate/{startDate}/{toDate}")
+    public List<Student> findByNameNotIn(@PathVariable("startDate") LocalDate startDate, @PathVariable("toDate") LocalDate toDate) {
+        return studentRepo.findByDobBetween(startDate, toDate);
+    }
+   @GetMapping("findByAgeLessThan")
+    public List<Student> findByNameNotIn(@RequestParam("age") Integer age) {
+        return studentRepo.findByAgeLessThan(age);
     }
 
 

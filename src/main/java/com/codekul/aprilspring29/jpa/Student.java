@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.springframework.util.backoff.BackOff;
+
+import java.time.LocalDate;
 
 @Entity
 public class Student {
@@ -15,6 +18,41 @@ public class Student {
     private String name;
 
     private String address;
+
+    private Boolean active =true;
+
+    private Integer age;
+
+    private LocalDate dob;
+
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
 
     public Long getId() {
         return id;
