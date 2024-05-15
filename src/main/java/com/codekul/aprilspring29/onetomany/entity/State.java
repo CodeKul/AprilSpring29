@@ -1,15 +1,14 @@
-package com.codekul.aprilspring29.onetoone.entity;
+package com.codekul.aprilspring29.onetomany.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
 @Setter
 @Getter
-@Entity
-public class Person {
+public class State {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,9 +16,10 @@ public class Person {
 
     private String name;
 
-    private String address;
+    private String stateCode;
 
-    @OneToOne
-    @JoinColumn(name = "aadhar_id")
-    private Aadhar aadhar;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "country_id")
+    @JsonBackReference
+    private Country country;
 }

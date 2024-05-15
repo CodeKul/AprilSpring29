@@ -24,17 +24,6 @@ public class PersonController {
     public String savePerson(@RequestBody Person person){
 
         personRepository.save(person);
-
-        var adhar = new Aadhar();
-        adhar.setNumber(person.getAadhar().getNumber());
-        Aadhar aadhar = aadharRepository.save(adhar);
-
-        var person1 = new Person();
-        person1.setAadhar(aadhar);
-        person1.setName(person.getName());
-        person1.setAddress(person.getAddress());
-        personRepository.save(person1);
-
         return "person saved..";
 
     }
