@@ -21,8 +21,5 @@ public class Country {
 
     private String countryCode;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<State> state;
 
 }

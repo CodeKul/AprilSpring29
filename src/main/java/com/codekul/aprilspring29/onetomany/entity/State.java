@@ -18,8 +18,7 @@ public class State {
 
     private String stateCode;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id")
-    @JsonBackReference
     private Country country;
 }
